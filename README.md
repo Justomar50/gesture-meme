@@ -1,43 +1,33 @@
-# Gesture Tracker 🖐️
+# MEME MATCH
 
-بروجكت بسيط بيستخدم الكاميرا عشان يتعرف على جستشر إيدك ووشك
-(حالياً: **Thumbs Up 👍** و **Thinking 🤔**) ويعرض صورة مناسبة جنب صورة الكاميرا live.
+Real-time Hand & Face Gesture Recognition using OpenCV and MediaPipe.
 
-## إزاي بيشتغل؟
-- **OpenCV** بيفتح الكاميرا ويقرا الفريمات.
-- **MediaPipe Hands** بيحلل كل فريم ويرجع 21 نقطة (landmark) على اليد.
-- **MediaPipe Face Mesh** بيرجع نقط على الوش (بنستخدم بس نقطة الأنف).
-- بنقارن إحداثيات النقط دي عشان نحدد الجستشر:
-  - Thumbs Up: الإبهام أعلى من باقي الصوابع (مقارنة إحداثي y).
-  - Thinking: المسافة بين طرف صباعك وطرف أنفك صغيرة (مقارنة إحداثيات x,y).
-- على حسب الجستشر، بنعرض صورة مختلفة جنب صورة الكاميرا.
+## Built With
+- Python 3
+- OpenCV
+- MediaPipe (Hands & Face Mesh)
 
-## التشغيل
+## How It Works
+- OpenCV opens your webcam feed frame-by-frame.
+- MediaPipe detects 21 hand landmarks and facial points.
+- The app compares landmark coordinates (e.g., finger height or distance to the nose) to detect gestures.
+- A corresponding meme/image is displayed side-by-side with your webcam feed.
 
-```bash
-pip install -r requirements.txt
-python gesture_tracker.py
-```
+## Setup & How to Run
 
-دوس `q` أو `Esc` عشان تقفل البرنامج.
-
-## هيكل المجلد
-```
-my-gesture-project/
-├── gesture_tracker.py
-├── requirements.txt
-├── images/
-│   ├── thumbs_up.jpg
-│   ├── thinking.jpg
-│   └── neutral.jpg
-└── README.md
-```
-
-⚠️ لازم تحط صورك إنت في مجلد `images/` بنفس الأسماء دي، أو تغيّر الأسماء
-في `IMAGE_PATHS` جوه `gesture_tracker.py`.
-
-## إزاي أضيف جستشر جديد؟
-1. حط صورة جديدة في `images/`.
-2. ضيف سطر جديد في `IMAGE_PATHS` بنفس اسم الجستشر.
-3. جوه دالة `classify_gesture`، ضيف شرط `if` جديد يفحص إحداثيات
-   الصوابع اللي بتميّز الجستشر ده، ورجّع اسم الجستشر لو الشرط اتحقق.
+1. **Install required libraries:**
+   Open your terminal/command prompt and run:
+   ```bash
+   pip install -r requirements.txt
+   ```
+2. **to run the code**
+ 
+    ```bash
+    python meme_match.py
+    ```
+    Press `q` or `Esc` to quit.
+  ----  
+  # Images
+  Sample meme images are included in the `images/` folder.
+*Feel free to swap them with your own!*
+  
