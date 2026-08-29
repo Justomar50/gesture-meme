@@ -1,26 +1,11 @@
-"""
-Gesture Tracker
-===============
-Tracks hand and face landmarks from the webcam, classifies a gesture,
-and shows a matching image next to the live camera feed.
 
-Gestures supported:
-- THUMBS_UP
-- POINTING
-- PEACE
-- THINKING   (index finger near mouth/nose)
-- SMART      (index finger near temple)
-- NEUTRAL    (default / fallback)
-"""
 
 import cv2
 import mediapipe as mp
 import numpy as np
 import os
 
-# ------------------------------------------------------------------
-# 1) Map each gesture name to the image file shown for it
-# ------------------------------------------------------------------
+
 IMAGE_PATHS = {
     "THUMBS_UP": "images/thumbs_up.jpg",
     "THINKING": "images/thinking.jpg",
@@ -30,9 +15,7 @@ IMAGE_PATHS = {
     "PEACE": "images/peace.jpg",
 }
 
-# ------------------------------------------------------------------
-# 2) MediaPipe setup
-# ------------------------------------------------------------------
+
 mp_drawing = mp.solutions.drawing_utils
 mp_hands = mp.solutions.hands
 mp_face_mesh = mp.solutions.face_mesh
@@ -238,9 +221,7 @@ def check_smart_gesture(hand_landmarks, face_landmarks, frame_width, frame_heigh
             return True
 
     return False
-# ====================================================================
-# 3) Main program loop
-# ====================================================================
+
 CAMERA_INDEX = 0
 cap = cv2.VideoCapture(CAMERA_INDEX)
 
